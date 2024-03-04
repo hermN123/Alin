@@ -389,7 +389,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>selesaikan persamaan berikut:
+  <p>mendefinisikan fungsi operasi baris eliminasi GAUSS</p>
+<p>Eliminasi gauss ditemukan oleh Carl Friedrich Gauss, metode ini dapat dimanfaatkan untuk memecahkan sistem persamaan linear dengan merepresentasikan (mengubah) menjadi bentuk matriks, matriks tersebut lalu diubah kebentuk Eselon Baris melalui Operasi Baris Elementer. Kemudian sistem diselesaikan dengan substitusi balik.</p>
+<ul class="simple">
+<li><p>RowSwap()</p></li>
+<li><p>Rowscale()</p></li>
+<li><p>RowaAdd()</p></li>
+</ul>
+<p>ADA TIGA OPERASI YANG DAPAT DILAKUKAN</p>
+<p>1.Tukarkan posisi kedua persamaan.</p>
+<p>2.Kalikan persamaan dengan bilangan apa pun yang bukan nol.</p>
+<p>3.Gantikan suatu persamaan dengan jumlah persamaan itu sendiri dan kelipatan persamaan lainnya.</p>
+<p>selesaikan persamaan berikut:
 $<span class="math notranslate nohighlight">\(
 8x_1+x_3=19\\
 x_1+2x_2+3x_3=9\\
@@ -412,18 +423,6 @@ x_1+2x_2+3x_3=9\\
 </div>
 </div>
 </div>
-<p>mendefinisikan fungsi operasi baris eliminasi GAUSS</p>
-<ul>
-<li><p>RowSwap()</p>
-<p>FDGDGDGDGGDGD</p>
-</li>
-<li><p>Rowscale()</p>
-<p>HDHHDDGDHD</p>
-</li>
-<li><p>RowaAdd()</p>
-<p>HDHDHDHDH</p>
-</li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RowSwap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
@@ -538,27 +537,46 @@ x_1+2x_2+3x_3=9\\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-<span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">r1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span>
+<span class="n">a2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">27</span>
+<span class="n">a3</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">Z1</span> <span class="o">=</span> <span class="p">(</span><span class="n">r1</span> <span class="o">-</span> <span class="n">a1</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="n">b1</span><span class="o">*</span><span class="n">Y</span><span class="p">)</span> <span class="o">/</span> <span class="n">c1</span>
+<span class="n">Z2</span> <span class="o">=</span> <span class="p">(</span><span class="n">r2</span> <span class="o">-</span> <span class="n">a2</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="n">b2</span><span class="o">*</span><span class="n">Y</span><span class="p">)</span> <span class="o">/</span> <span class="n">c2</span>
+<span class="n">Z3</span> <span class="o">=</span> <span class="p">(</span><span class="n">r3</span> <span class="o">-</span> <span class="n">a3</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="n">b3</span><span class="o">*</span><span class="n">Y</span><span class="p">)</span> <span class="o">/</span> <span class="n">c3</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">c1</span><span class="p">],</span> <span class="p">[</span><span class="n">a2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c2</span><span class="p">],</span> <span class="p">[</span><span class="n">a3</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">c3</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">])</span>
+<span class="n">intersect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">intersect</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">intersect</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">intersect</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Titik Perpotongan&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Sumbu X&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sumbu Y&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Sumbu Z&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1a8f3c3f6e8affe3d3506a98ad779e1478789cd38eea78ea52ba32705d3fce2d.png" src="_images/1a8f3c3f6e8affe3d3506a98ad779e1478789cd38eea78ea52ba32705d3fce2d.png" />
+<img alt="_images/55665a78f4229f4edc5d12f9b61bc750947475742031f567f46a5c50842baed5.png" src="_images/55665a78f4229f4edc5d12f9b61bc750947475742031f567f46a5c50842baed5.png" />
 </div>
 </div>
 <p>Selesaikan sistem persamaan linear berikut:</p>
